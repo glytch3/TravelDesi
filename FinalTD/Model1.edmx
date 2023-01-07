@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FinalTDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="TicketId" />
+          </Key>
+          <Property Name="TicketId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="DateOfJourney" Type="datetime" />
+          <Property Name="FlightId" Type="int" />
+          <Property Name="Seatno" Type="int" />
+        </EntityType>
+        <EntityType Name="Flight_Details">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Flight_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Source" Type="nvarchar" MaxLength="50" />
+          <Property Name="Destination" Type="nvarchar" MaxLength="50" />
+          <Property Name="Arrival" Type="nvarchar" MaxLength="50" />
+          <Property Name="Departure" Type="nvarchar" MaxLength="50" />
+          <Property Name="Flight_Class" Type="nvarchar" MaxLength="50" />
+          <Property Name="Flight_Price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Seats" Type="int" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="User_Details">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="ParentsName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateOfBirth" Type="datetime" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityContainer Name="FinalTDModelStoreContainer">
+          <EntitySet Name="Booking" EntityType="Self.Booking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Flight_Details" EntityType="Self.Flight_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Details" EntityType="Self.User_Details" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FinalTDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="FinalTDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Logins" EntityType="Self.Login" />
+          <EntitySet Name="User_Details" EntityType="FinalTDModel.User_Details" />
+          <EntitySet Name="Flight_Details" EntityType="FinalTDModel.Flight_Details" />
+          <EntitySet Name="Bookings" EntityType="FinalTDModel.Booking" />
+        </EntityContainer>
+        <EntityType Name="User_Details">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParentsName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Flight_Details">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Flight_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Source" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Destination" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Arrival" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Departure" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Flight_Class" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Flight_Price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Seats" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="TicketId" />
+          </Key>
+          <Property Name="TicketId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="DateOfJourney" Type="DateTime" Precision="3" />
+          <Property Name="FlightId" Type="Int32" />
+          <Property Name="Seatno" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FinalTDModelStoreContainer" CdmEntityContainer="FinalTDEntities">
+          <EntitySetMapping Name="Logins">
+            <EntityTypeMapping TypeName="FinalTDModel.Login">
+              <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Details">
+            <EntityTypeMapping TypeName="FinalTDModel.User_Details">
+              <MappingFragment StoreEntitySet="User_Details">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="ParentsName" ColumnName="ParentsName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Flight_Details">
+            <EntityTypeMapping TypeName="FinalTDModel.Flight_Details">
+              <MappingFragment StoreEntitySet="Flight_Details">
+                <ScalarProperty Name="Seats" ColumnName="Seats" />
+                <ScalarProperty Name="Flight_Price" ColumnName="Flight_Price" />
+                <ScalarProperty Name="Flight_Class" ColumnName="Flight_Class" />
+                <ScalarProperty Name="Departure" ColumnName="Departure" />
+                <ScalarProperty Name="Arrival" ColumnName="Arrival" />
+                <ScalarProperty Name="Destination" ColumnName="Destination" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Flight_Name" ColumnName="Flight_Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bookings">
+            <EntityTypeMapping TypeName="FinalTDModel.Booking">
+              <MappingFragment StoreEntitySet="Booking">
+                <ScalarProperty Name="Seatno" ColumnName="Seatno" />
+                <ScalarProperty Name="FlightId" ColumnName="FlightId" />
+                <ScalarProperty Name="DateOfJourney" ColumnName="DateOfJourney" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
